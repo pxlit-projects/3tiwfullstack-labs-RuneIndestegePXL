@@ -16,8 +16,9 @@ public class Organization {
     private String name;
     private String address;
 
+    @Transient
     private List<Employee> employees;
-
+    @Transient
     private List<Department> departments;
 
     public Organization(){}

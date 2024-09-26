@@ -14,6 +14,7 @@ public class Department {
 
     private long organizationId;
 
+    @Transient
     private List<Employee> employees;
 
     private String position;

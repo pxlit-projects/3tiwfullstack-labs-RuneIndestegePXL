@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  employeeservice_db:
+    image: mysql:8.0
+    container_name: employeeservice_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: employeeservice_db
+    ports:
+      - "3306:3306"
+    networks:
+      - microservices-network
+
+  departmentservice_db:
+    image: mysql:8.0
+    container_name: departmentservice_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: departmentservice_db
+    ports:
+      - "3307:3306"
+    networks:
+      - microservices-network
+
+  organizationservice_db:
+    image: mysql:8.0
+    container_name: organizationservice_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: organizationservice_db
+    ports:
+      - "3308:3306"
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge
+

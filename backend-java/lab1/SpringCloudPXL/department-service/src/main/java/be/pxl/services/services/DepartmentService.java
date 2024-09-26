@@ -5,6 +5,7 @@ import be.pxl.services.domain.Department;
 import be.pxl.services.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,6 +41,7 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public List<Department> findByOrganizationIdWithEmployees(long organizationId) {
-        return _departmentRepository.findByOrganizationIdWithEmployees(organizationId);
+        //return _departmentRepository.findByOrganizationIdWithEmployees(organizationId);
+        return new ArrayList<>();
     }
 }
