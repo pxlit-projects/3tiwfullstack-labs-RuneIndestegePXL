@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
     Organization getOrganizationById(long id);
 
-    Organization findByIdWithEmployees(long id);
+    //Organization findByIdWithEmployees(long id);
 
-    Organization findByIdWithDepartments(long id);
+    //Organization findByIdWithDepartments(long id);
 
-    Organization findByIdWithDepartmentsAndEmployees(long id);
+    //Organization findByIdWithDepartmentsAndEmployees(long id);
 }

@@ -1,6 +1,7 @@
 package be.pxl.services.controller;
 
 import be.pxl.services.controller.DTO.input.EmployeeRecord;
+import be.pxl.services.controller.DTO.output.EmployeeResponseDTO;
 import be.pxl.services.domain.Employee;
 import be.pxl.services.services.IEmployeeService;
 import org.springframework.http.HttpStatus;
@@ -24,22 +25,22 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<List<Employee>> findAll(){
+    public ResponseEntity<List<EmployeeResponseDTO>> findAll(){
         return new ResponseEntity<>(_employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> findById(@PathVariable long id){
+    public ResponseEntity<EmployeeResponseDTO> findById(@PathVariable long id){
         return new ResponseEntity<>(_employeeService.getEmployeeById(id), HttpStatus.OK);
     }
 
     @GetMapping("/department/{departmentId}")
-    public ResponseEntity<List<Employee>> findByDepartment(@PathVariable long departmentId){
+    public ResponseEntity<List<EmployeeResponseDTO>> findByDepartment(@PathVariable long departmentId){
         return new ResponseEntity<>(_employeeService.findByDepartmentId(departmentId), HttpStatus.OK);
     }
 
     @GetMapping("/organization/{organizationId}")
-    public ResponseEntity<List<Employee>> findByOrganization(@PathVariable long organizationId){
+    public ResponseEntity<List<EmployeeResponseDTO>> findByOrganization(@PathVariable long organizationId){
         return new ResponseEntity<>(_employeeService.findByOrganizationId(organizationId), HttpStatus.OK);
     }
 }

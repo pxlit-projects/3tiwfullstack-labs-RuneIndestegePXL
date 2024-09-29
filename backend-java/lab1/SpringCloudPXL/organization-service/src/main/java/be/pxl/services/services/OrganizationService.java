@@ -18,16 +18,19 @@ public class OrganizationService implements  IOrganizationService{
 
     @Override
     public Organization findByIdWithEmployees(long id) {
-        return _organizationRepository.findByIdWithEmployees(id);
+        return null;
+        //return _organizationRepository.findByIdWithEmployees(id);
     }
 
     @Override
     public Organization findByIdWithDepartments(long id) {
-        return _organizationRepository.findByIdWithDepartments(id);
+        return null;
+        //return _organizationRepository.findByIdWithDepartments(id);
     }
 
     @Override
     public Organization findByIdWithDepartmentsAndEmployees(long id) {
-        return _organizationRepository.findByIdWithDepartmentsAndEmployees(id);
+        return null;
+        //return _organizationRepository.findByIdWithDepartmentsAndEmployees(id);
     }
 }
