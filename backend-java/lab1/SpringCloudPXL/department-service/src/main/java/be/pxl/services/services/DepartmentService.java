@@ -3,8 +3,14 @@ package be.pxl.services.services;
 import be.pxl.services.controller.DTO.input.DepartmentRecord;
 import be.pxl.services.controller.DTO.output.DepartmentResponseDTO;
 import be.pxl.services.domain.Department;
+import be.pxl.services.domain.Employee;
 import be.pxl.services.repository.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +18,16 @@ import java.util.List;
 @Service
 public class DepartmentService implements IDepartmentService {
     private final DepartmentRepository _departmentRepository;
-    public DepartmentService(DepartmentRepository departmentRepository){
+    private final RestTemplate restTemplate;
+    @Value("${employee.service.url}")
+    private String employeeServiceUrl;
+    public DepartmentService(DepartmentRepository departmentRepository, RestTemplate restTemplate){
         this._departmentRepository = departmentRepository;
+        this.restTemplate = restTemplate;
     }
 
     @Override
     public List<DepartmentResponseDTO> findByOrganizationId(long organizationId) {
-
         return convertDepartmentListToDepartmentResponseDTOList(_departmentRepository.findByOrganizationId(organizationId));
     }
 
@@ -50,10 +59,29 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public List<DepartmentResponseDTO> findByOrganizationIdWithEmployees(long organizationId) {
-        //return _departmentRepository.findByOrganizationIdWithEmployees(organizationId);
-        return null;
-    }
+        /*
+        List<Department> departments = _departmentRepository.findByOrganizationId(organizationId);
+        return convertDepartmentListToDepartmentResponseDTOList(departments);
 
+         */
+        List<Department> departments = _departmentRepository.findByOrganizationId(organizationId);
+        for (Department department : departments) {
+            List<Employee> employees = fetchEmployeesByDepartmentId(department.getId());
+            department.setEmployees(employees);
+        }
+        return convertDepartmentListToDepartmentResponseDTOList(departments);
+
+    }
+    private List<Employee> fetchEmployeesByDepartmentId(long departmentId) {
+        String url = employeeServiceUrl + "/api/employee/department/" + departmentId;
+        ResponseEntity<List<Employee>> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Employee>>() {}
+        );
+        return response.getBody();
+    }
 
     private List<DepartmentResponseDTO> convertDepartmentListToDepartmentResponseDTOList(List<Department>departments) {
         List<DepartmentResponseDTO> departmentResponseDTOS = new ArrayList<>();
