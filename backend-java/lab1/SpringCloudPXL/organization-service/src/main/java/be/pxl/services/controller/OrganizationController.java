@@ -1,15 +1,15 @@
 package be.pxl.services.controller;
 
+import be.pxl.services.controller.DTO.input.EmployeeRecord;
+import be.pxl.services.controller.DTO.input.OrganizationRecord;
+import be.pxl.services.controller.DTO.output.OrganizationWithEmployeesResponseDTO;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
 import be.pxl.services.domain.Organization;
 import be.pxl.services.services.IOrganizationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +20,11 @@ public class OrganizationController {
     private final IOrganizationService _organizationService;
     public OrganizationController(IOrganizationService organizationService){
         this._organizationService = organizationService;
+    }
+    @PostMapping("/")
+    public ResponseEntity<Organization> addOrganization(@RequestBody OrganizationRecord organizationRecord){
+        _organizationService.addOrganization(organizationRecord);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Organization> findById(@PathVariable long id){
@@ -36,7 +41,7 @@ public class OrganizationController {
     }
 
     @GetMapping("/{id}/with-employees")
-    public ResponseEntity<Organization> findByIdWithEmployees(@PathVariable long id){
+    public ResponseEntity<OrganizationWithEmployeesResponseDTO> findByIdWithEmployees(@PathVariable long id){
         return new ResponseEntity<>(_organizationService.findByIdWithEmployees(id), HttpStatus.OK);
     }
 

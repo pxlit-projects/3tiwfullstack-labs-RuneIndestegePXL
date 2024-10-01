@@ -64,10 +64,11 @@ public class DepartmentService implements IDepartmentService {
         return convertDepartmentListToDepartmentResponseDTOList(departments);
 
          */
+
         List<Department> departments = _departmentRepository.findByOrganizationId(organizationId);
         for (Department department : departments) {
             List<Employee> employees = fetchEmployeesByDepartmentId(department.getId());
-            department.setEmployees(employees);
+            department.setEmployees(employees); // manually populate employees
         }
         return convertDepartmentListToDepartmentResponseDTOList(departments);
 

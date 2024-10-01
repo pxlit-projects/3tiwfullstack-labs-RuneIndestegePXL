@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department,Long> {
     List<Department> findByOrganizationId(long organizationId);
-
+/*
     @Query("SELECT d FROM Department d LEFT JOIN FETCH d.employees WHERE d.id = :organizationId")
     List<Department> findByOrganizationIdWithEmployees(long organizationId);
+
+ */
 }
