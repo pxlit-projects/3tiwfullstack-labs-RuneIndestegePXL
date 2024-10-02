@@ -3,6 +3,7 @@ package be.pxl.services.controller;
 import be.pxl.services.controller.DTO.input.DepartmentRecord;
 import be.pxl.services.controller.DTO.input.EmployeeRecord;
 import be.pxl.services.controller.DTO.output.DepartmentResponseDTO;
+import be.pxl.services.controller.DTO.output.DepartmentResponseWithEmployeesDTO;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
 import be.pxl.services.services.IDepartmentService;
@@ -42,7 +43,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/organization/{organizationId}/with-employees")
-    public ResponseEntity<List<DepartmentResponseDTO>> findByOrganizationWithEmployees(@PathVariable long organizationId){
+    public ResponseEntity<List<DepartmentResponseWithEmployeesDTO>> findByOrganizationWithEmployees(@PathVariable long organizationId){
         return new ResponseEntity<>(_departmentService.findByOrganizationIdWithEmployees(organizationId), HttpStatus.OK);
     }
 

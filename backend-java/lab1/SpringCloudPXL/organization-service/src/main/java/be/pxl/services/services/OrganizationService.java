@@ -1,9 +1,7 @@
 package be.pxl.services.services;
 
 import be.pxl.services.controller.DTO.input.OrganizationRecord;
-import be.pxl.services.controller.DTO.output.DepartmentResponseDTO;
-import be.pxl.services.controller.DTO.output.EmployeeResponseDTO;
-import be.pxl.services.controller.DTO.output.OrganizationWithEmployeesResponseDTO;
+import be.pxl.services.controller.DTO.output.*;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
 import be.pxl.services.domain.Organization;
@@ -33,37 +31,56 @@ public class OrganizationService implements  IOrganizationService{
     }
 
     @Override
-    public Organization getOrganizationById(long id) {
-        return _organizationRepository.getOrganizationById(id);
+    public OrganizationResponseDTO getOrganizationById(long id) {
+        return mapToOrganizationResponseDTO(_organizationRepository.getOrganizationById(id));
     }
 
     @Override
     public OrganizationWithEmployeesResponseDTO findByIdWithEmployees(long id) {
         //return _organizationRepository.findByIdWithEmployees(id);
         Organization organization = _organizationRepository.findById(id).orElseThrow();
-        List<Employee> employees = fetchEmployeesByDepartmentId(organization.getId());
+        List<Employee> employees = fetchEmployeesByOrganizationId(organization.getId());
         organization.setEmployees(employees); // manually populate employees
         return mapToOrganizationWithEmployeesResponseDTO(organization);
     }
 
     @Override
-    public Organization findByIdWithDepartments(long id) {
-        return null;
+    public OrganizationWithDepartmentsResponseDTO findByIdWithDepartments(long id) {
+        Organization organization = _organizationRepository.findById(id).orElseThrow();
+        List<Department> departments = fetchDepartmentsByOrganizationId(id);
+        organization.setDepartments(departments);
+        return mapToOrganizationWithDepartmentsResponseDTO(organization);
         //return _organizationRepository.findByIdWithDepartments(id);
     }
 
     @Override
-    public Organization findByIdWithDepartmentsAndEmployees(long id) {
-        return null;
+    public OrganizationWithEmployeesAndDepartmentsResponseDTO findByIdWithDepartmentsAndEmployees(long id) {
+        Organization organization = _organizationRepository.findById(id).orElseThrow();
+        List<Employee> employees = fetchEmployeesByOrganizationId(id);
+        organization.setEmployees(employees);
+        List<Department> departments = fetchDepartmentsByOrganizationId(id);
+        organization.setDepartments(departments);
+        return mapToOrganizationWithEmployeesAndDepartmentsResponseDTO(organization);
         //return _organizationRepository.findByIdWithDepartmentsAndEmployees(id);
     }
-    private List<Employee> fetchEmployeesByDepartmentId(long departmentId) {
-        String url = employeeServiceUrl + "/api/employee/department/" + departmentId;
+    private List<Employee> fetchEmployeesByOrganizationId(long organizationId) {
+        String url = employeeServiceUrl + "/api/employee//organization/" + organizationId;
         ResponseEntity<List<Employee>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<List<Employee>>() {}
+        );
+        return response.getBody();
+    }
+
+    private List<Department> fetchDepartmentsByOrganizationId(long organizationId) {
+        String url = departmentServiceUrl + "/api/department/organization/" + organizationId;
+        ResponseEntity<List<Department>> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Department>>() {}
         );
         return response.getBody();
     }
@@ -91,6 +108,14 @@ public class OrganizationService implements  IOrganizationService{
         }
         return employeeResponseDTOS;
     }
+    private OrganizationResponseDTO mapToOrganizationResponseDTO(Organization organization) {
+        // Map the fields from Organization to OrganizationWithEmployeesResponseDTO
+        return new OrganizationResponseDTO(
+                organization.getId(),
+                organization.getName(),
+                organization.getAddress()
+        );
+    }
     private OrganizationWithEmployeesResponseDTO mapToOrganizationWithEmployeesResponseDTO(Organization organization) {
         // Map the fields from Organization to OrganizationWithEmployeesResponseDTO
         return new OrganizationWithEmployeesResponseDTO(
@@ -98,6 +123,25 @@ public class OrganizationService implements  IOrganizationService{
                 organization.getName(),
                 organization.getAddress(),
                 organization.getEmployees()  // Already populated employees
+        );
+    }
+    private OrganizationWithDepartmentsResponseDTO mapToOrganizationWithDepartmentsResponseDTO(Organization organization) {
+        // Map the fields from Organization to OrganizationWithEmployeesResponseDTO
+        return new OrganizationWithDepartmentsResponseDTO(
+                organization.getId(),
+                organization.getName(),
+                organization.getAddress(),
+                organization.getDepartments()
+        );
+    }
+    private OrganizationWithEmployeesAndDepartmentsResponseDTO mapToOrganizationWithEmployeesAndDepartmentsResponseDTO(Organization organization) {
+        // Map the fields from Organization to OrganizationWithEmployeesResponseDTO
+        return new OrganizationWithEmployeesAndDepartmentsResponseDTO(
+                organization.getId(),
+                organization.getName(),
+                organization.getAddress(),
+                organization.getEmployees(),
+                organization.getDepartments()// Already populated employees
         );
     }
 }

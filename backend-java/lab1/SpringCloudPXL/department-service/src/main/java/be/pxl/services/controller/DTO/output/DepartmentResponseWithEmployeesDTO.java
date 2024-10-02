@@ -4,8 +4,8 @@ import be.pxl.services.domain.Employee;
 
 import java.util.List;
 
-public record DepartmentResponseDTO(
+public record DepartmentResponseWithEmployeesDTO (
         long id,
         long organizationId,
-        String position
-) {}
+        String position,
+        List<Employee> employees) {}

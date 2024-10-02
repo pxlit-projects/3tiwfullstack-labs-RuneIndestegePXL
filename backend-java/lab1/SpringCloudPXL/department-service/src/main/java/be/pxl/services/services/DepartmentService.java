@@ -2,6 +2,7 @@ package be.pxl.services.services;
 
 import be.pxl.services.controller.DTO.input.DepartmentRecord;
 import be.pxl.services.controller.DTO.output.DepartmentResponseDTO;
+import be.pxl.services.controller.DTO.output.DepartmentResponseWithEmployeesDTO;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
 import be.pxl.services.repository.DepartmentRepository;
@@ -42,8 +43,7 @@ public class DepartmentService implements IDepartmentService {
         return new DepartmentResponseDTO(
                 department.getId(),
                 department.getOrganizationId(),
-                department.getPosition(),
-                department.getEmployees()
+                department.getPosition()
         );
     }
 
@@ -58,7 +58,7 @@ public class DepartmentService implements IDepartmentService {
     }
 
     @Override
-    public List<DepartmentResponseDTO> findByOrganizationIdWithEmployees(long organizationId) {
+    public List<DepartmentResponseWithEmployeesDTO> findByOrganizationIdWithEmployees(long organizationId) {
         /*
         List<Department> departments = _departmentRepository.findByOrganizationId(organizationId);
         return convertDepartmentListToDepartmentResponseDTOList(departments);
@@ -70,7 +70,7 @@ public class DepartmentService implements IDepartmentService {
             List<Employee> employees = fetchEmployeesByDepartmentId(department.getId());
             department.setEmployees(employees); // manually populate employees
         }
-        return convertDepartmentListToDepartmentResponseDTOList(departments);
+        return convertDepartmentListToDepartmentResponseWithEmployeesDTOList(departments);
 
     }
     private List<Employee> fetchEmployeesByDepartmentId(long departmentId) {
@@ -90,9 +90,21 @@ public class DepartmentService implements IDepartmentService {
             departmentResponseDTOS.add(new DepartmentResponseDTO(
                     department.getId(),
                     department.getOrganizationId(),
+                    department.getPosition()
+                )
+            );
+        }
+        return departmentResponseDTOS;
+    }
+    private List<DepartmentResponseWithEmployeesDTO> convertDepartmentListToDepartmentResponseWithEmployeesDTOList(List<Department>departments) {
+        List<DepartmentResponseWithEmployeesDTO> departmentResponseWithEmployeesDTOS = new ArrayList<>();
+        for (Department department : departments) {
+            departmentResponseWithEmployeesDTOS.add(new DepartmentResponseWithEmployeesDTO(
+                    department.getId(),
+                    department.getOrganizationId(),
                     department.getPosition(),
                     department.getEmployees()));
         }
-        return departmentResponseDTOS;
+        return departmentResponseWithEmployeesDTOS;
     }
 }

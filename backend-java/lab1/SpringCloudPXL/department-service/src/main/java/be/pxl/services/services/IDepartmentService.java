@@ -2,6 +2,7 @@ package be.pxl.services.services;
 
 import be.pxl.services.controller.DTO.input.DepartmentRecord;
 import be.pxl.services.controller.DTO.output.DepartmentResponseDTO;
+import be.pxl.services.controller.DTO.output.DepartmentResponseWithEmployeesDTO;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
 
@@ -17,5 +18,5 @@ public interface IDepartmentService {
 
     void addDepartment(DepartmentRecord departmentRecord);
 
-    List<DepartmentResponseDTO> findByOrganizationIdWithEmployees(long organizationId);
+    List<DepartmentResponseWithEmployeesDTO> findByOrganizationIdWithEmployees(long organizationId);
 }

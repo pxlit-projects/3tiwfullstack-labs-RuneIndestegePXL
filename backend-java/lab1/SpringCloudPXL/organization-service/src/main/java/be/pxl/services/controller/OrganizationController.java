@@ -2,6 +2,9 @@ package be.pxl.services.controller;
 
 import be.pxl.services.controller.DTO.input.EmployeeRecord;
 import be.pxl.services.controller.DTO.input.OrganizationRecord;
+import be.pxl.services.controller.DTO.output.OrganizationResponseDTO;
+import be.pxl.services.controller.DTO.output.OrganizationWithDepartmentsResponseDTO;
+import be.pxl.services.controller.DTO.output.OrganizationWithEmployeesAndDepartmentsResponseDTO;
 import be.pxl.services.controller.DTO.output.OrganizationWithEmployeesResponseDTO;
 import be.pxl.services.domain.Department;
 import be.pxl.services.domain.Employee;
@@ -27,16 +30,16 @@ public class OrganizationController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Organization> findById(@PathVariable long id){
+    public ResponseEntity<OrganizationResponseDTO> findById(@PathVariable long id){
         return new ResponseEntity<>(_organizationService.getOrganizationById(id), HttpStatus.OK);
     }
     @GetMapping("/{id}/with-departments")
-    public ResponseEntity<Organization> findByIdWithDepartments(@PathVariable long id){
+    public ResponseEntity<OrganizationWithDepartmentsResponseDTO> findByIdWithDepartments(@PathVariable long id){
         return new ResponseEntity<>(_organizationService.findByIdWithDepartments(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}/with-departments-and-employees")
-    public ResponseEntity<Organization> findByIdWithDepartmentsAndEmployees(@PathVariable long id){
+    public ResponseEntity<OrganizationWithEmployeesAndDepartmentsResponseDTO> findByIdWithDepartmentsAndEmployees(@PathVariable long id){
         return new ResponseEntity<>(_organizationService.findByIdWithDepartmentsAndEmployees(id), HttpStatus.OK);
     }
 
