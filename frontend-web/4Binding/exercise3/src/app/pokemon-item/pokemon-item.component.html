@@ -1,0 +1,5 @@
+<div [ngStyle]="{'background-color': getColor(pokemon.type), 'color': 'white'}">
+    <h3>{{ pokemon.name }}</h3>
+    <p>Type: {{ pokemon.type }}</p>
+    <img [src]="pokemon.icon" alt="{{ pokemon.name }} image">
+  </div>

@@ -27,6 +27,9 @@ public class Employee {
 
     public Employee(){}
 
+
+
+
     public long getId() {
         return id;
     }
@@ -74,4 +77,50 @@ public class Employee {
     public void setPosition(String position) {
         this.position = position;
     }
+    public static class Builder {
+        private long id;
+        private long organizationId;
+        private long departmentId;
+        private String name;
+        private int age;
+        private String position;
+
+        public Builder() {}
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder organizationId(long organizationId) {
+            this.organizationId = organizationId;
+            return this;
+        }
+
+        public Builder departmentId(long departmentId) {
+            this.departmentId = departmentId;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder position(String position) {
+            this.position = position;
+            return this;
+        }
+
+        // Build method to create an Employee instance
+        public Employee build() {
+            return new Employee(id, organizationId, departmentId, name, age, position);
+        }
+    }
+
 }

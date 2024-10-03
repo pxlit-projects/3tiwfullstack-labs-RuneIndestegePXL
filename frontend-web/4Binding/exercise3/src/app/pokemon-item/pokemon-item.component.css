@@ -1,0 +1,19 @@
+:host {
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    display: block;
+    width: 200px; /* Set fixed width */
+    height: 250px; /* Set fixed height */
+    text-align: center; /* Center text and image inside */
+    box-sizing: border-box; /* Ensure padding is included in width/height */
+  }
+  
+  img {
+    width: 100px;  /* Set image width */
+    height: 100px; /* Set image height */
+    object-fit: contain; /* Ensure the image fits within the box without distortion */
+    margin-top: 1rem; /* Optional: add margin to separate the image from the text */
+  }
+  
