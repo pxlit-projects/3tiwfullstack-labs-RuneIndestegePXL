@@ -1,1 +1,23 @@
-<p>article works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>Article Number</th>
+        <th>Article Name</th>
+        <th>Purchase Price</th>
+        <th>Sale Price</th>
+        <th>Image</th>
+        <th>Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles; let i = index" [ngStyle]="{'background-color': i % 2 === 0 ? '#f9f9f9' : '#fff'}" (click)="showDetails(article)">
+        <td>{{ article.id }}</td>
+        <td>{{ article.name }}</td>
+        <td>€{{ article.purchasePrice.toFixed(2) }}</td>
+        <td>€{{ article.salePrice.toFixed(2) }}</td>
+        <td><img [src]="article.imageUrl" alt="{{ article.name }}" width="50" height="50"></td>
+        <td><a [href]="'https://www.google.be/search?q=' + article.name" target="_blank">Info</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
