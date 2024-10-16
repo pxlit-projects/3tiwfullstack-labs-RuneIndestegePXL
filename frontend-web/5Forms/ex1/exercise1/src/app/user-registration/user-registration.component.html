@@ -1,0 +1,99 @@
+<div class="container">
+    <h2>User Registration</h2>
+    <form (ngSubmit)="onSubmit(ngSubmit)" #userForm="ngForm">
+      
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          [(ngModel)]="fullName"
+          #fullNameModel="ngModel"
+          required
+          class="form-control"
+        />
+        @if(fullNameModel.invalid && fullNameModel.touched){
+            <div class="error">
+                Full Name is required.
+              </div>
+        }
+
+      </div>
+      
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          #emailModel="ngModel"
+          required
+          email
+          class="form-control"
+        />
+        @if(emailModel.invalid && emailModel.touched){
+            <div class="error">
+                Enter a valid email address.
+              </div>
+        }
+        
+      </div>
+      
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordModel="ngModel"
+          required
+          class="form-control"
+        />
+        @if(passwordModel.invalid && passwordModel.touched){
+            <div  class="error">
+                Password is required.
+              </div>
+        }
+       
+      </div>
+      
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          #confirmPasswordModel="ngModel"
+          required
+          class="form-control"
+        />
+        @if (confirmPasswordModel.invalid && confirmPasswordModel.touched) {
+            <div class="error">
+                Confirm Password is required.
+              </div>          }
+        @if(confirmPassword !== password && confirmPasswordModel.touched){
+            <div class="error">
+                Passwords must match.
+              </div>
+        }
+      </div>
+      
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="userForm.invalid || confirmPassword !== password"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+  

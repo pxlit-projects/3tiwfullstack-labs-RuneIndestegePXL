@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Add Skills</h2>
+    <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()">
+  
+      <!-- Iterate over the skills FormArray -->
+      <div formArrayName="skills">
+        <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i" class="skill-group">
+          
+          <!-- Skill Name Field -->
+          <label for="skillName">Skill Name:</label>
+          <input
+            type="text"
+            formControlName="skillName"
+            placeholder="Enter skill name"
+            class="form-control"
+          />
+          @if (skill.get('skillName')?.invalid && skill.get('skillName')?.touched) {
+            <div class="error">
+                Skill Name is required.
+              </div>
+          }
+          
+  
+          <label for="experienceLevel">Experience Level:</label>
+          <select formControlName="experienceLevel" class="form-control">
+            <option value="">Select Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+          @if(skill.get('experienceLevel')?.invalid && skill.get('experienceLevel')?.touched){
+            <div  class="error">
+                Experience Level is required.
+              </div>
+          }
+        @if (skills.length > 1) {
+            <button type="button" (click)="removeSkill(i)" class="remove-button">
+                Remove Skill
+              </button> 
+        }
+          
+  
+        </div>
+      </div>
+  
+      <button type="button" (click)="addSkill()" class="add-button">Add Skill</button>
+  
+      <button type="submit" [disabled]="skillsForm.invalid" class="submit-button">Submit</button>
+    </form>
+  </div>
+  
