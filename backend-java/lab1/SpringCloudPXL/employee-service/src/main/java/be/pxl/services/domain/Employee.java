@@ -27,9 +27,6 @@ public class Employee {
 
     public Employee(){}
 
-
-
-
     public long getId() {
         return id;
     }

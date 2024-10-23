@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f79408ca-44d9-453b-8486-70aa757c4229" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/pxl/services/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/be/pxl/services/AppTest.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/client/NotificationClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/model/dto/EmployeeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/model/dto/NotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/department-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/department-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/department-service/src/main/java/be/pxl/services/DepartmentServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/department-service/src/main/java/be/pxl/services/DepartmentServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/department-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/department-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/EmployeeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/EmployeeServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/domain/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/services/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/services/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/services/IEmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/java/be/pxl/services/services/IEmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/employee-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/NotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/NotificationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/domain/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/domain/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/services/INotifivationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/services/INotifivationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/services/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/java/be/pxl/services/services/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/notification-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/src/main/java/be/pxl/services/OrganizationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/src/main/java/be/pxl/services/OrganizationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringCloudPXL/organization-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,21 +44,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,6 +71,7 @@
       <updated>1726739611043</updated>
       <workItem from="1726739612113" duration="506000" />
       <workItem from="1726770842048" duration="868000" />
+      <workItem from="1729593666730" duration="5000" />
     </task>
     <servers />
   </component>

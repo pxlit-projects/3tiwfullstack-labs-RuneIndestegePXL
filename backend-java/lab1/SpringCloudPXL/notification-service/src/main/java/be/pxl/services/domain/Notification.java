@@ -1,18 +1,32 @@
 package be.pxl.services.domain;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "notification")
+
 public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    private String to;
-    private String from;
-    private String subject;
+    private String sender;
     private String message;
 
+    public Notification(){
 
+    }
+    public Notification(String sender, String message){
+        this.sender = sender;
+        this.message = message;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

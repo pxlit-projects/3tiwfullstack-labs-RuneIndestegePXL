@@ -1,8 +1,11 @@
 package be.pxl.services.services;
 
+import be.pxl.services.client.NotificationClient;
 import be.pxl.services.controller.DTO.input.EmployeeRecord;
 import be.pxl.services.controller.DTO.output.EmployeeResponseDTO;
 import be.pxl.services.domain.Employee;
+import be.pxl.services.model.dto.EmployeeRequest;
+import be.pxl.services.model.dto.NotificationRequest;
 import be.pxl.services.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +15,10 @@ import java.util.List;
 @Service
 public class EmployeeService implements IEmployeeService{
     private final EmployeeRepository _employeeRepository;
-    public EmployeeService(EmployeeRepository employeeRepository){
+    private final NotificationClient _notificationClient;
+    public EmployeeService(EmployeeRepository employeeRepository, NotificationClient notificationClient){
         this._employeeRepository =employeeRepository;
+        _notificationClient = notificationClient;
     }
     @Override
     public List<EmployeeResponseDTO> getAllEmployees() {
@@ -51,6 +56,9 @@ public class EmployeeService implements IEmployeeService{
                 employeeRecord.name(),
                 employeeRecord.age() ,
                 employeeRecord.position()));
+
+        _notificationClient.sendNotification(new NotificationRequest(employeeRecord.name(), employeeRecord.position()));
+
     }
 
     private List<EmployeeResponseDTO> convertEmployeeListToEmployeeResponseDTOList(List<Employee> employees){
@@ -66,5 +74,15 @@ public class EmployeeService implements IEmployeeService{
             );
         }
         return employeeResponseDTOS;
+    }
+    @Override
+    public void createEmployee(EmployeeRequest employeeRequest){
+        Employee employee = new Employee.Builder()
+                .name(employeeRequest.getName())
+                .age(employeeRequest.getAge())
+                .position(employeeRequest.getPosition())
+                .build();
+        _employeeRepository.save(employee);
+        _notificationClient.sendNotification(new NotificationRequest(employee.getName(), employee.getPosition()));
     }
 }
